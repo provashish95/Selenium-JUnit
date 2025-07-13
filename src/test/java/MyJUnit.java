@@ -1,8 +1,7 @@
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.time.Duration;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -10,8 +9,8 @@ import java.time.Duration;
 public class MyJUnit {
 
     WebDriver driver;
-    @BeforeAll
 
+    @BeforeAll
     public void setup() {
         driver = new ChromeDriver();
 
@@ -20,12 +19,18 @@ public class MyJUnit {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
     }
+
+   @DisplayName("Check website title") //Test Title
     @Test
-    public void visitSite(){
-        driver.get("https://demoqa.com/");
+    public void visitSite() {
+        driver.get("https://demoqa.com/"); //test step
+        String titile = driver.getTitle(); //actual result
+        String titileExpectedResult = "DEMOQA"; //expected result
+        Assertions.assertEquals(titile, titileExpectedResult); //test status
     }
 
-    public void teardown(){
+    @AfterAll
+    public void teardown() {
         driver.quit();
     }
 }
