@@ -1,8 +1,11 @@
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
+import java.util.List;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
@@ -29,8 +32,26 @@ public class MyJUnit {
         Assertions.assertEquals(titile, titileExpectedResult); //test status
     }
 
+    @Test
+    public void submitForm(){
+
+        //Ajax syntex - &&('#idname') in console panel;
+
+        driver.get("https://demoqa.com/text-box");
+
+        //Text Box Testing...
+        driver.findElement(By.id("userName")).sendKeys("Test User");
+        driver.findElement(By.cssSelector("[type=email]")).sendKeys("provashish@gmail.com");
+
+        List <WebElement> elements = driver.findElements(By.className("form-control"));
+
+        elements.get(2).sendKeys("Dhaka");
+        elements.get(3).sendKeys("Dhaka");
+    }
+
     @AfterAll
     public void teardown() {
-        driver.quit();
+       // driver.quit();
+        //close website
     }
 }
