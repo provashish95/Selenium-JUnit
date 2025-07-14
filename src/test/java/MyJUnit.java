@@ -6,7 +6,9 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
@@ -172,6 +174,28 @@ public class MyJUnit {
         driver.close();
         driver.switchTo().window(arrayList.get(0));
     }
+
+    @DisplayName("Multiple Window Test")
+    @Test
+    public void handleMultipleWindow(){
+        driver.get("https://demoqa.com/browser-windows");
+        driver.findElement(By.id("windowButton")).click();
+        String parentWindow = driver.getWindowHandle();
+        Set<String> allWindow = driver.getWindowHandles();
+
+       Iterator <String> iterator = allWindow.iterator();
+
+       while(iterator.hasNext()){
+          String childWindow = iterator.next();
+          if(!parentWindow.equalsIgnoreCase(childWindow)){
+              driver.switchTo().window(childWindow);
+              String text = driver.findElement(By.id("sampleHeading")).getText();
+          }
+       }
+       driver.close();
+       driver.switchTo().window(parentWindow);
+    }
+
 
     @AfterAll
     public void teardown() {
