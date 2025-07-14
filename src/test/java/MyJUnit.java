@@ -146,6 +146,19 @@ public class MyJUnit {
 
     }
 
+    @DisplayName("Mouse Hover Test")
+    @Test
+    public void mouseHover() {
+        driver.get("https://www.aiub.edu/");
+        Actions actions = new Actions(driver);
+
+        //Use X-PATH
+        //X-PATH syntex in console pannel = $x('//tagname[contains(text(), "text-under-tag")]');
+        actions.moveToElement(driver.findElement(By.xpath("//a[contains(text(), \"About\")]"))).perform();
+
+
+    }
+
 
     @AfterAll
     public void teardown() {

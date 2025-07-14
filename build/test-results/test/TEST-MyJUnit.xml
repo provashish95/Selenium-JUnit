@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MyJUnit" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-07-14T09:54:32.815Z" hostname="DESKTOP-TD113K1" time="7.132">
+<testsuite name="MyJUnit" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-07-14T10:13:47.257Z" hostname="DESKTOP-TD113K1" time="2.884">
   <properties/>
-  <testcase name="Select dropdown Test" classname="MyJUnit" time="7.132"/>
+  <testcase name="Mouse hover Test" classname="MyJUnit" time="2.884"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
