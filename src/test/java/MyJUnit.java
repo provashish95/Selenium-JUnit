@@ -21,7 +21,6 @@ public class MyJUnit {
         //see in maximum screen...
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-
     }
 
    @DisplayName("Check website title") //Test Title
@@ -33,19 +32,21 @@ public class MyJUnit {
         Assertions.assertEquals(titile, titileExpectedResult); //test status
     }
 
+
+    @DisplayName("Submit From test")
     @Test
     public void submitForm(){
 
         //Ajax syntex - &&('#idname') in console panel;
 
+        //Get form page
         driver.get("https://demoqa.com/text-box");
 
-        //Text Box Testing...
+        //Input value into form
         driver.findElement(By.id("userName")).sendKeys("Test User");
         driver.findElement(By.cssSelector("[type=email]")).sendKeys("provashish@gmail.com");
 
         List <WebElement> elements = driver.findElements(By.className("form-control"));
-
         elements.get(2).sendKeys("Dhaka");
         elements.get(3).sendKeys("Dhaka");
 
@@ -55,6 +56,20 @@ public class MyJUnit {
 
         //List<WebElement> btnElement = driver.findElements(By.tagName("button"));
         driver.findElements(By.tagName("button")).get(1).click();
+
+        //Get actual value after input
+        List <WebElement> textElements =  driver.findElements(By.tagName("p"));
+        String nameActual = textElements.get(0).getText();
+        String emailActual = textElements.get(1).getText();
+        String currentAddActual = textElements.get(2).getText();
+        String parmanentAddActual = textElements.get(3).getText();
+
+        //Check input and output value
+        Assertions.assertTrue(nameActual.contains("Test User"));
+        Assertions.assertTrue(emailActual.contains("provashish@gmail.com"));
+        Assertions.assertTrue(currentAddActual.contains("Dhaka"));
+        Assertions.assertTrue(parmanentAddActual.contains("Dhaka"));
+
     }
 
     @AfterAll
