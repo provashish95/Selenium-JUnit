@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
 import java.util.List;
@@ -23,7 +24,7 @@ public class MyJUnit {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
-   @DisplayName("Check website title") //Test Title
+    @DisplayName("Check website title") //Test Title
     @Test
     public void visitSite() {
         driver.get("https://demoqa.com/"); //test step
@@ -35,7 +36,7 @@ public class MyJUnit {
 
     @DisplayName("Submit From test")
     @Test
-    public void submitForm(){
+    public void submitForm() {
 
         //Ajax syntex - &&('#idname') in console panel;
 
@@ -46,7 +47,7 @@ public class MyJUnit {
         driver.findElement(By.id("userName")).sendKeys("Test User");
         driver.findElement(By.cssSelector("[type=email]")).sendKeys("provashish@gmail.com");
 
-        List <WebElement> elements = driver.findElements(By.className("form-control"));
+        List<WebElement> elements = driver.findElements(By.className("form-control"));
         elements.get(2).sendKeys("Dhaka");
         elements.get(3).sendKeys("Dhaka");
 
@@ -58,7 +59,7 @@ public class MyJUnit {
         driver.findElements(By.tagName("button")).get(1).click();
 
         //Get actual value after input
-        List <WebElement> textElements =  driver.findElements(By.tagName("p"));
+        List<WebElement> textElements = driver.findElements(By.tagName("p"));
         String nameActual = textElements.get(0).getText();
         String emailActual = textElements.get(1).getText();
         String currentAddActual = textElements.get(2).getText();
@@ -72,9 +73,26 @@ public class MyJUnit {
 
     }
 
+    @DisplayName("Button test")
+    @Test
+    public void doubleClick() {
+        //Get button page
+        driver.get("https://demoqa.com/buttons");
+
+        //Click button
+        Actions actions = new Actions(driver);
+
+        List<WebElement> btnElements = driver.findElements(By.tagName("button"));
+
+        actions.doubleClick(btnElements.get(1)).perform(); //double click
+        actions.contextClick(btnElements.get(2)).perform(); // Right
+        btnElements.get(3).click(); //Normal click
+
+    }
+
     @AfterAll
     public void teardown() {
-       // driver.quit();
+        // driver.quit();
         //close website
     }
 }
