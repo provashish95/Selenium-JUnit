@@ -5,6 +5,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -155,10 +156,22 @@ public class MyJUnit {
         //Use X-PATH
         //X-PATH syntex in console pannel = $x('//tagname[contains(text(), "text-under-tag")]');
         actions.moveToElement(driver.findElement(By.xpath("//a[contains(text(), \"About\")]"))).perform();
-
-
     }
 
+    @DisplayName("Multiple Tab Test")
+    @Test
+    public void handleMultipleTab() throws InterruptedException {
+        driver.get("https://demoqa.com/browser-windows");
+        driver.findElement(By.id("tabButton")).click();
+        Thread.sleep(3000);
+        ArrayList<String> arrayList = new ArrayList(driver.getWindowHandles());
+        System.out.println(arrayList);
+        driver.switchTo().window(arrayList.get(1));
+        String heading = driver.findElement(By.id("sampleHeading")).getText();
+        System.out.println(heading);
+        driver.close();
+        driver.switchTo().window(arrayList.get(0));
+    }
 
     @AfterAll
     public void teardown() {
