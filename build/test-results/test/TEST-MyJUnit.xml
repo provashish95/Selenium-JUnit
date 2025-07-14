@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MyJUnit" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-07-14T06:29:31.360Z" hostname="DESKTOP-TD113K1" time="5.187">
+<testsuite name="MyJUnit" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-07-14T07:13:52.586Z" hostname="DESKTOP-TD113K1" time="10.447">
   <properties/>
-  <testcase name="Button test" classname="MyJUnit" time="5.187"/>
+  <testcase name="Alert Test" classname="MyJUnit" time="10.447"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

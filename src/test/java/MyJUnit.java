@@ -85,8 +85,34 @@ public class MyJUnit {
         List<WebElement> btnElements = driver.findElements(By.tagName("button"));
 
         actions.doubleClick(btnElements.get(1)).perform(); //double click
-        actions.contextClick(btnElements.get(2)).perform(); // Right
-        btnElements.get(3).click(); //Normal click
+        actions.contextClick(btnElements.get(2)).perform(); // Right click
+        actions.click(btnElements.get(3)).perform();
+    }
+
+    @DisplayName("Alert Test")
+    @Test
+    public void handleAlert() throws InterruptedException {
+        driver.get("https://demoqa.com/alerts");
+
+//        driver.findElement(By.id("alertButton")).click();
+//        Thread.sleep(3000);
+//        driver.switchTo().alert().accept();
+
+//        driver.findElement(By.id("timerAlertButton")).click();
+//        Thread.sleep(6000);
+//        driver.switchTo().alert().accept();
+
+        driver.findElement(By.id("confirmButton")).click();
+        Thread.sleep(6000);
+        driver.switchTo().alert().dismiss();
+    }
+
+    @DisplayName("Date Test")
+    @Test
+    public void setDate() {
+        driver.get("https://demoqa.com/date-picker");
+        driver.findElement(By.id("datePickerMonthYearInput"));
+
 
     }
 
