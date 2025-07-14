@@ -1,8 +1,5 @@
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
@@ -111,9 +108,16 @@ public class MyJUnit {
     @Test
     public void setDate() {
         driver.get("https://demoqa.com/date-picker");
-        driver.findElement(By.id("datePickerMonthYearInput"));
+        WebElement txtDate = driver.findElement(By.id("datePickerMonthYearInput"));
 
+        Actions action = new Actions(driver);
+     // action.click(txtDate).sendKeys(Keys.CONTROL+"a").sendKeys(Keys.BACK_SPACE).sendKeys("07/01/2025").sendKeys(Keys.ENTER).perform();
 
+        txtDate.click();
+        txtDate.sendKeys(Keys.CONTROL+ "a");
+        txtDate.sendKeys(Keys.BACK_SPACE);
+        txtDate.sendKeys("07/01/2025");
+        txtDate.sendKeys(Keys.ENTER);
     }
 
     @AfterAll
