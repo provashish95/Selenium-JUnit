@@ -2,6 +2,7 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 import java.util.List;
@@ -111,14 +112,40 @@ public class MyJUnit {
         WebElement txtDate = driver.findElement(By.id("datePickerMonthYearInput"));
 
         Actions action = new Actions(driver);
-     // action.click(txtDate).sendKeys(Keys.CONTROL+"a").sendKeys(Keys.BACK_SPACE).sendKeys("07/01/2025").sendKeys(Keys.ENTER).perform();
+        // action.click(txtDate).sendKeys(Keys.CONTROL+"a").sendKeys(Keys.BACK_SPACE).sendKeys("07/01/2025").sendKeys(Keys.ENTER).perform();
 
         txtDate.click();
-        txtDate.sendKeys(Keys.CONTROL+ "a");
+        txtDate.sendKeys(Keys.CONTROL + "a");
         txtDate.sendKeys(Keys.BACK_SPACE);
         txtDate.sendKeys("07/01/2025");
         txtDate.sendKeys(Keys.ENTER);
     }
+
+    @DisplayName("Select dropdown Test")
+    @Test
+    public void selectDropdown() throws InterruptedException {
+        driver.get("https://demoqa.com/select-menu");
+//        Select select = new Select(driver.findElement(By.id("oldSelectMenu")));
+//        select.selectByVisibleText("Green");
+
+        List<WebElement> dropdown = driver.findElements(By.className("css-1hwfws3"));
+        dropdown.get(1).click();
+        Thread.sleep(2000);
+
+//      dropdown.get(1).sendKeys(Keys.ARROW_DOWN);
+//      dropdown.get(1).sendKeys(Keys.ENTER);
+
+        Actions actions = new Actions(driver);
+//        actions.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
+
+        //Select text from up
+        for (int i = 0; i < 2; i++) {
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+        }
+        actions.sendKeys(Keys.ENTER).perform();
+
+    }
+
 
     @AfterAll
     public void teardown() {
