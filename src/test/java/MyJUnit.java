@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -47,6 +48,13 @@ public class MyJUnit {
 
         elements.get(2).sendKeys("Dhaka");
         elements.get(3).sendKeys("Dhaka");
+
+        //click submit button after scrolling...
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0, 500)");
+
+        //List<WebElement> btnElement = driver.findElements(By.tagName("button"));
+        driver.findElements(By.tagName("button")).get(1).click();
     }
 
     @AfterAll
