@@ -214,6 +214,15 @@ public class MyJUnit {
         }
     }
 
+    @DisplayName("Iframe Test")
+    @Test
+    public void handleIframe() {
+        driver.get("https://demoqa.com/frames");
+        driver.switchTo().frame("frame1");
+        String text = driver.findElement(By.id("sampleHeading")).getText();
+        Assertions.assertTrue(text.contains("This is a sample page"));
+        driver.switchTo().defaultContent();
+    }
 
     @AfterAll
     public void teardown() {
