@@ -224,6 +224,16 @@ public class MyJUnit {
         driver.switchTo().defaultContent();
     }
 
+    @DisplayName("Upload file Test")
+    @Test
+    public void uploadFile(){
+        driver.get("https://demoqa.com/upload-download");
+        //driver.findElement(By.id("uploadFile")).sendKeys("G://sqa.jpg");
+
+        //Make image path is Absulate path cause sendKeys not accept relative path.
+        driver.findElement(By.id("uploadFile")).sendKeys(System.getProperty("user.dir")+ "/src/test/resources/sqa.jpg");
+    }
+
     @AfterAll
     public void teardown() {
         // driver.quit();
