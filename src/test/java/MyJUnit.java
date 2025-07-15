@@ -177,23 +177,41 @@ public class MyJUnit {
 
     @DisplayName("Multiple Window Test")
     @Test
-    public void handleMultipleWindow(){
+    public void handleMultipleWindow() {
         driver.get("https://demoqa.com/browser-windows");
         driver.findElement(By.id("windowButton")).click();
         String parentWindow = driver.getWindowHandle();
         Set<String> allWindow = driver.getWindowHandles();
 
-       Iterator <String> iterator = allWindow.iterator();
+        Iterator<String> iterator = allWindow.iterator();
 
-       while(iterator.hasNext()){
-          String childWindow = iterator.next();
-          if(!parentWindow.equalsIgnoreCase(childWindow)){
-              driver.switchTo().window(childWindow);
-              String text = driver.findElement(By.id("sampleHeading")).getText();
-          }
-       }
-       driver.close();
-       driver.switchTo().window(parentWindow);
+        while (iterator.hasNext()) {
+            String childWindow = iterator.next();
+            if (!parentWindow.equalsIgnoreCase(childWindow)) {
+                driver.switchTo().window(childWindow);
+                String text = driver.findElement(By.id("sampleHeading")).getText();
+            }
+        }
+        driver.close();
+        driver.switchTo().window(parentWindow);
+    }
+
+    @DisplayName("Scrap Data")
+    @Test
+    public void scrapData() {
+        driver.get("https://demoqa.com/webtables");
+
+        //$$('.rt-tbody');  in console pannel
+        //$$('[role = rowgroup]');
+        WebElement table = driver.findElement(By.className("rt-tbody"));
+        List<WebElement> allRows = table.findElements(By.cssSelector("[role = rowgroup]"));
+
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.cssSelector("[role = gridcell]"));
+            for (WebElement cell : cells) {
+                System.out.println(cell.getText());
+            }
+        }
     }
 
 

@@ -1,7 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MyJUnit" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-07-14T11:10:06.257Z" hostname="DESKTOP-TD113K1" time="5.442">
+<testsuite name="MyJUnit" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-07-15T10:40:49.534Z" hostname="DESKTOP-TD113K1" time="31.165">
   <properties/>
-  <testcase name="Multiple Window Test" classname="MyJUnit" time="5.442"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="Scrap Data" classname="MyJUnit" time="31.165"/>
+  <system-out><![CDATA[Cierra
+Vega
+39
+cierra@example.com
+10000
+Insurance
+
+Alden
+Cantrell
+45
+alden@example.com
+12000
+Compliance
+
+Kierra
+Gentry
+29
+kierra@example.com
+2000
+Legal
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
